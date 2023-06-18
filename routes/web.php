@@ -5,6 +5,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\CardController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +38,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::group(["middleware" => ["auth"]], function () {
+    Route::get("/cards", [CardController::class, "index"]);
+    Route::get("/cards/create", [CardController::class, "create"]);
+    Route::post("/cards", [CardController::class, "store"]);
+    Route::get("/cards/{card}", [CardController::class, "show"]);
+    Route::get("/camera/{card}", [CardController::class, "camera"]);
+    Route::delete("/cards/{card}", [CardController::class, "delete"]);
+});
+
+
+
+require __DIR__ . '/auth.php';
