@@ -19,6 +19,24 @@ use App\Http\Controllers\CardController;
 |
 */
 
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
+Route::get('/qr-code', function () {
+    $url = 'https://readouble.com/laravel/10.x/ja/installation.html'; // QRコードに変換するURL
+
+    $qrCode = QrCode::format('png')->size(200)->generate($url);
+    $tempFilePath = 'app/temp/qr-code.png'; // 一時ファイルとして保存するパス
+
+    file_put_contents($tempFilePath, $qrCode);
+
+    $cloudinaryResponse = Cloudinary::upload($tempFilePath)->getSecurePath();
+
+    unlink($tempFilePath);
+
+    return $cloudinaryResponse;
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

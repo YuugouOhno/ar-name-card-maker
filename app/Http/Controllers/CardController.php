@@ -23,6 +23,7 @@ class CardController extends Controller
     {
         $input = $request->all();
         $card->fill($input)->save();
+        $card->createQRcode($card);
         return redirect("/cards/" . $card->id);
     }
 
