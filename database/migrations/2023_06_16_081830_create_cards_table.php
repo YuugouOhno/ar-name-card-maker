@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ar_icon_image', 200);
             $table->string('ar_content_image', 200);
             $table->string('ar_text', 200);
-            $table->string('ar_qr_image', 200);
+            $table->string('ar_qr_image', 200)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
