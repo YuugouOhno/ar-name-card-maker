@@ -7,6 +7,9 @@ use Inertia\Inertia;
 
 use App\Models\Card;
 
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 class CardController extends Controller
 {
     public function index(Card $card)
@@ -23,7 +26,20 @@ class CardController extends Controller
     {
         $input = $request->all();
         $card->fill($input)->save();
-        $card->createQRcode($card);
+
+        $url = 'https://readouble.com/laravel/10.x/ja/installation.html'; // QRコードに変換するURL
+
+        $qrCode = QrCode::format('png')->size(200)->generate($url);
+        $tempFilePath = 'app/temp/qr-code.png'; // 一時ファイルとして保存するパス
+
+        file_put_contents($tempFilePath, $qrCode);
+
+        $cloudinaryResponse = Cloudinary::upload($tempFilePath)->getSecurePath();
+
+        unlink($tempFilePath);
+
+        return $cloudinaryResponse;
+
         return redirect("/cards/" . $card->id);
     }
 
@@ -37,7 +53,8 @@ class CardController extends Controller
         return view("camera", ["card" => $card]);
     }
 
-    public function delete(Card $card){
+    public function delete(Card $card)
+    {
         $card->delete();
         return redirect("/cards");
     }
