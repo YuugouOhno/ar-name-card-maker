@@ -25,6 +25,9 @@ class CardController extends Controller
     public function store(Request $request, Card $card)
     {
         $input = $request->all();
+        $ar_icon_image_url = Cloudinary::upload($request->file('ar_icon_image')[0]->getrealpath())->getSecurePath();
+        $ar_content_image_url = Cloudinary::upload($request->file('ar_content_image')[0]->getrealpath())->getSecurePath();
+        dd($ar_icon_image_url,$ar_content_image_url);  //画像のURLを画面に表示
         $card->fill($input)->save();
 
         $url = 'https://readouble.com/laravel/10.x/ja/installation.html'; // QRコードに変換するURL
@@ -37,8 +40,6 @@ class CardController extends Controller
         $cloudinaryResponse = Cloudinary::upload($tempFilePath)->getSecurePath();
 
         unlink($tempFilePath);
-
-        return $cloudinaryResponse;
 
         return redirect("/cards/" . $card->id);
     }

@@ -15,7 +15,12 @@ class Card extends Model
     // fillableを追記
     protected $fillable = [
         "name",
-        "job"
+        "job",
+        "ar_name",
+        "ar_icon_image",
+        "ar_content_image",
+        "ar_text",
+        "ar_qr_image"
     ];
 
     // public function storeImage($request_image)

@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name', 200);
             $table->string('job', 200);
+            $table->string('ar_name', 200);
+            $table->string('ar_icon_image', 200);
+            $table->string('ar_content_image', 200);
+            $table->string('ar_text', 200);
+            $table->string('ar_qr_image', 200);
             $table->timestamps();
             $table->softDeletes();
         });
