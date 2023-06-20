@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/react";
 
 const Show = (props) => {
     const { auth, card } = props;
+    console.log(card.ar_qr_image)
 
     return (
         <AuthenticatedLayout
@@ -19,7 +20,8 @@ const Show = (props) => {
                     <h1>{card.name}</h1>
                     <p>{card.job}</p>
                 </div>
-
+                <img src={ card.ar_qr_image } alt="画像が読み込めません。"/>
+                <p>{card.ar_qr_image}</p>
                 <div>
                     <Link href="/cards">戻る</Link>
                 </div>

@@ -24,13 +24,13 @@
                 <a-box></a-box>
             </a-entity> -->
 
-            <a-image src="https://res.cloudinary.com/dzxep0pa9/image/upload/v1674706081/samples/animals/cat.jpg" height="1.35" width="1.35" position="-0.55 0 0" rotation="270 0 0" scale="1 1 1" side="double"></a-image>
+            <a-image src="{{ $card->ar_icon_image }}" height="1.35" width="1.35" position="-0.55 0 0" rotation="270 0 0" scale="1 1 1" side="double"></a-image>
 
-            <a-text value="YuugouOhno" side="double" position="0.2 0 0" rotation="270 0 0" align="left" scale="2 2 2"></a-text>
+            <a-text value="{{ $card->ar_name }}" side="double" position="0.2 0 0" rotation="270 0 0" align="left" scale="2 2 2"></a-text>
 
-            <a-text value="YuugouOhno \n fdsfdsf \n sdfdsfds \n dsfdsfdsf " side="double" position="0.7 0 1.5" rotation="270 0 0" align="right" scale="1.3 1.3 1.3"></a-text>
+            <a-text value="{{ $card->ar_text }}" side="double" position="0.7 0 1.5" rotation="270 0 0" align="right" scale="1.3 1.3 1.3"></a-text>
 
-            <a-image src="https://res.cloudinary.com/dzxep0pa9/image/upload/v1674706081/samples/animals/cat.jpg" height="1.35" width="1.8" position="2 0 1.5" rotation="270 0 0" scale="1 1 1" side="double"></a-image>
+            <a-image src="{{ $card->ar_content_image }}" height="1.35" width="1.8" position="2 0 1.5" rotation="270 0 0" scale="1 1 1" side="double"></a-image>
 
             <a-image src="{{asset('ar/Twitter.png')}}" height="1" width="1" position="-0.7 0 3" rotation="270 0 0" scale="1 1 1" side="double"></a-image>
 

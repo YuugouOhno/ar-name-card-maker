@@ -39,10 +39,8 @@ class CardController extends Controller
 
         $card["ar_qr_image"] = Cloudinary::upload($tempFilePath)->getSecurePath();
         $card->save();
-        dd($card);
-
+        
         unlink($tempFilePath);
-
 
         return redirect("/cards/" . $card->id);
     }
