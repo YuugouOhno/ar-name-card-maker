@@ -65,7 +65,7 @@ const Create = (props) => {
                 </div>
             )}
             {page >= 1 && (
-                <div className="flex h-screen w-full flex-col px-12 bg-gray-200 text-gray-800">
+                <div className="flex w-full flex-col px-12 bg-gray-200 text-gray-800">
                     <div className="bg-[#B4FFF2] h-[80px] w-full flex justify-between items-center fixed left-0 px-12 z-50">
                         <img src="./header.png" className="h-full" />
                     </div>
