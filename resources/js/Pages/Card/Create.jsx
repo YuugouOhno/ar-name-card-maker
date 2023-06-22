@@ -30,92 +30,98 @@ const Create = (props) => {
                 <div class="h-screen flex items-center justify-center lerative flex-col">
                     <img src="./top.png" className="h-2/3" />
                     <div className="flex">
-                        <a href="#" class="gradient1">
+                        <a href="#" class="gradient1 mx-20">
                             使い方
                         </a>
-                        <a href="#" class="gradient1">
+                        <a href="#" class="gradient1 mx-20">
                             始める
                         </a>
                     </div>
                 </div>
             </div>
             <div className="flex h-screen flex-col">
-                <div className="bg-[#B4FFF2] h-[10%]">
+                <div className="bg-[#B4FFF2] h-[10%] w-full">
                     <img src="./header.png" className="h-full" />
                 </div>
-                <div className="flex py-12 ">
-                    <div className="flex-1 flex items-center justify-center">
+                <div className="flex flex-col lg:flex-row py-12 items-center justify-center">
+                    <div className="flex-1 flex items-center justify-center w-1/2">
                         <form
                             onSubmit={handleSendPosts}
                             enctype="multipart/form-data"
                         >
-                            <div>
-                                <h2>名前</h2>
-                                <input
-                                    type="text"
-                                    placeholder="名刺太郎"
-                                    onChange={(e) =>
-                                        setData("name", e.target.value)
-                                    }
-                                />
-                            </div>
+                            <div className="flex mb-4">
+                                <div className="mr-4">
+                                    <h2>名前</h2>
+                                    <input
+                                        type="text"
+                                        placeholder="名刺太郎"
+                                        onChange={(e) =>
+                                            setData("name", e.target.value)
+                                        }
+                                    />
+                                </div>
 
-                            <div>
-                                <h2>名前（英語）</h2>
-                                <input
-                                    type="text"
-                                    placeholder="TarouMeishi"
-                                    onChange={(e) =>
-                                        setData("en_name", e.target.value)
-                                    }
-                                />
+                                <div>
+                                    <h2>名前（ローマ字）</h2>
+                                    <input
+                                        type="text"
+                                        placeholder="TarouMeishi"
+                                        onChange={(e) =>
+                                            setData("en_name", e.target.value)
+                                        }
+                                    />
+                                </div>
                             </div>
+                            <div className="flex mb-4">
+                                <div className="mr-4">
+                                    <h2>職</h2>
+                                    <input
+                                        type="text"
+                                        placeholder="エンジニア"
+                                        onChange={(e) =>
+                                            setData("job", e.target.value)
+                                        }
+                                    />
+                                </div>
 
-                            <div>
-                                <h2>職</h2>
-                                <input
-                                    type="text"
-                                    placeholder="エンジニア"
-                                    onChange={(e) =>
-                                        setData("job", e.target.value)
-                                    }
-                                />
+                                <div>
+                                    <h2>所属</h2>
+                                    <input
+                                        type="text"
+                                        placeholder="OO大学"
+                                        onChange={(e) =>
+                                            setData(
+                                                "affiliation",
+                                                e.target.value
+                                            )
+                                        }
+                                    />
+                                </div>
                             </div>
+                            <div className="flex mb-4">
+                                <div className="mr-4">
+                                    <h2>Twitter</h2>
+                                    <input
+                                        type="text"
+                                        placeholder="twitter_url"
+                                        onChange={(e) =>
+                                            setData("twitter", e.target.value)
+                                        }
+                                    />
+                                </div>
 
-                            <div>
-                                <h2>所属</h2>
-                                <input
-                                    type="text"
-                                    placeholder="OO大学"
-                                    onChange={(e) =>
-                                        setData("affiliation", e.target.value)
-                                    }
-                                />
+                                <div className="mr-4">
+                                    <h2>Github</h2>
+                                    <input
+                                        type="text"
+                                        placeholder="github_url"
+                                        onChange={(e) =>
+                                            setData("github", e.target.value)
+                                        }
+                                    />
+                                </div>
                             </div>
-
-                            <div>
-                                <h2>Twitter</h2>
-                                <input
-                                    type="text"
-                                    placeholder="twitter_url"
-                                    onChange={(e) =>
-                                        setData("twitter", e.target.value)
-                                    }
-                                />
-                            </div>
-
-                            <div>
-                                <h2>Github</h2>
-                                <input
-                                    type="text"
-                                    placeholder="github_url"
-                                    onChange={(e) =>
-                                        setData("github", e.target.value)
-                                    }
-                                />
-                            </div>
-
-                            <div>
+                            <div className="mr-4 mb-4">
                                 <h2>Portfolio</h2>
                                 <input
                                     type="text"
@@ -125,19 +131,7 @@ const Create = (props) => {
                                     }
                                 />
                             </div>
-
-                            <div>
-                                <h2>AR名刺から遷移するURL</h2>
-                                <input
-                                    type="text"
-                                    placeholder="link"
-                                    onChange={(e) =>
-                                        setData("link_url", e.target.value)
-                                    }
-                                />
-                            </div>
-
-                            <div>
+                            <div className="mr-4 mb-4">
                                 <h2>ar名刺に入れる文章（3~4行を推奨）</h2>
                                 <textarea
                                     placeholder="私の魅力について"
@@ -146,8 +140,7 @@ const Create = (props) => {
                                     }
                                 ></textarea>
                             </div>
-
-                            <div class="image">
+                            <div class="image mb-4">
                                 <h2>ar名刺のアイコン画像</h2>
                                 <input
                                     type="file"
@@ -157,7 +150,7 @@ const Create = (props) => {
                                     }
                                 />
                             </div>
-                            <div class="image">
+                            <div class="image mb-4">
                                 <h2>ar名刺に入れる画像</h2>
                                 <input
                                     type="file"
@@ -170,17 +163,13 @@ const Create = (props) => {
                                     }
                                 />
                             </div>
-
-                            <button
-                                type="submit"
-                                className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
-                            >
-                                create
+                            <button type="submit" className="gradient1 mx-20">
+                                作成
                             </button>
                         </form>
                     </div>
 
-                    <div className="flex flex-col flex-1 overflow-y-auto">
+                    <div className="flex lg:flex-col overflow-y-auto">
                         <div className="m-1 w-[455px] h-[275px] bg-white p-10 flex flex-col">
                             <div
                                 id="affiliation"
