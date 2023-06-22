@@ -39,7 +39,6 @@ class CardController extends Controller
         $tempFilePath = 'app/temp/qr-code.png'; // 一時ファイルとして保存するパス
 
         file_put_contents($tempFilePath, $qrCode);
-        dd("qrCode",$qrCode,"tempFilePath",$tempFilePath);
 
         $card["ar_qr_image"] = Cloudinary::upload($tempFilePath)->getSecurePath();
         $card->save();
