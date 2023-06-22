@@ -25,12 +25,12 @@ const Create = (props) => {
 
     const [page, setPage] = useState(0);
     const [bg_image, setBg_image] = useState();
-    const [bg_color, setBg_color] = useState();
+    const [bg_color, setBg_color] = useState("#000000");
 
     const handleSetBg = (type,value) => {
         if (type == "image") {
             setBg_image("./d-" + value + ".png");
-            setBg_color("")
+            setBg_color("#000000")
         } else if (type == "color") {
             setBg_color(value)
             setBg_image("");
@@ -271,7 +271,7 @@ const Create = (props) => {
                         </div>
 
                         <div className="flex lg:flex-col overflow-y-auto">
-                            <div className="m-4 w-[455px] h-[275px] bg-white flex flex-col relative">
+                            <div className={`m-4 w-[455px] h-[275px] flex flex-col relative bg-[${bg_color}]`}>
                                 {bg_image && (
                                     <img
                                         src={bg_image}
@@ -316,7 +316,7 @@ const Create = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-[455px] h-[275px] bg-white m-4 flex justify-center items-center">
+                            <div className={`w-[455px] h-[275px] m-4 flex justify-center items-center bg-[${bg_color}]`}>
                                 {bg_image && (
                                     <img
                                         src={bg_image}
