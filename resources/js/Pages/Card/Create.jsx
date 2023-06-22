@@ -22,6 +22,7 @@ const Create = (props) => {
     return (
         <div className="p-12">
             <form onSubmit={handleSendPosts} enctype="multipart/form-data">
+            @csrf
                 <div>
                     <h2>名前</h2>
                     <input
