@@ -17,9 +17,12 @@ class CardController extends Controller
         return Inertia::render("Card/Index", ["cards" => $card->get()]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render("Card/Create");
+        if ($request) {
+            $card = $request->session()->get('card');
+        };
+        return Inertia::render("Card/Create", ["card" => $card]);
     }
 
     public function store(Request $request, Card $card)
@@ -42,7 +45,8 @@ class CardController extends Controller
         
         unlink($tempFilePath);
 
-        return redirect("/cards/" . $card->id);
+        $request->session()->put('card', $card);
+        return redirect()->route("create");
     }
 
     public function show(Card $card)

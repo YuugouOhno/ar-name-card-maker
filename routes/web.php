@@ -40,9 +40,9 @@ use App\Http\Controllers\CardController;
 
 // Route::group(["middleware" => ["auth"]], function () {
     // Route::get("/cards", [CardController::class, "index"]);
-    Route::get("/", [CardController::class, "create"]);
+    Route::get("/", [CardController::class, "create"])->name("create");
     Route::post("/cards", [CardController::class, "store"]);
-    Route::get("/cards/{card}", [CardController::class, "show"]);
+    // Route::get("/cards/{card}", [CardController::class, "show"]);
     Route::get("/camera/{card}", [CardController::class, "camera"]);
     // Route::delete("/cards/{card}", [CardController::class, "delete"]);
 // });

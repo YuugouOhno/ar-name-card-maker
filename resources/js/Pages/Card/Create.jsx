@@ -1,7 +1,10 @@
 import React from "react";
 import { Link, useForm } from "@inertiajs/react";
 
-const Create = () => {
+const Create = (props) => {
+    const { card } = props;
+    console.log("test", card);
+
     const { data, setData, post } = useForm({
         name: "",
         job: "",
@@ -17,68 +20,83 @@ const Create = () => {
     };
 
     return (
-            <div className="p-12">
-                <form onSubmit={handleSendPosts} enctype="multipart/form-data">
-                    <div>
-                        <h2>名前</h2>
-                        <input
-                            type="text"
-                            placeholder="名刺太郎"
-                            onChange={(e) => setData("name", e.target.value)}
-                        />
-                    </div>
+        <div className="p-12">
+            <form onSubmit={handleSendPosts} enctype="multipart/form-data">
+                <div>
+                    <h2>名前</h2>
+                    <input
+                        type="text"
+                        placeholder="名刺太郎"
+                        onChange={(e) => setData("name", e.target.value)}
+                    />
+                </div>
 
-                    <div>
-                        <h2>名前（英語）</h2>
-                        <input
-                            type="text"
-                            placeholder="TarouMeishi"
-                            onChange={(e) => setData("ar_name", e.target.value)}
-                        />
-                    </div>
+                <div>
+                    <h2>名前（英語）</h2>
+                    <input
+                        type="text"
+                        placeholder="TarouMeishi"
+                        onChange={(e) => setData("ar_name", e.target.value)}
+                    />
+                </div>
 
-                    <div>
-                        <h2>職</h2>
-                        <input
-                            type="text"
-                            placeholder="エンジニア"
-                            onChange={(e) => setData("job", e.target.value)}
-                        />
-                    </div>
+                <div>
+                    <h2>職</h2>
+                    <input
+                        type="text"
+                        placeholder="エンジニア"
+                        onChange={(e) => setData("job", e.target.value)}
+                    />
+                </div>
 
-                    <div>
-                        <h2>ar名刺に入れる文章（3~4行を推奨）</h2>
-                        <textarea
-                            placeholder="私の魅力について"
-                            onChange={(e) => setData("ar_text", e.target.value)}
-                        ></textarea>
-                    </div>
+                <div>
+                    <h2>ar名刺に入れる文章（3~4行を推奨）</h2>
+                    <textarea
+                        placeholder="私の魅力について"
+                        onChange={(e) => setData("ar_text", e.target.value)}
+                    ></textarea>
+                </div>
 
-                    <div class="image">
-                        <h2>アイコン画像</h2>
-                        <input
-                            type="file"
-                            name="ar_icon_image"
-                            onChange={(e) =>
-                                setData("ar_icon_image", e.target.files)
-                            }
-                        />
-                    </div>
-                    <div class="image">
+                <div class="image">
+                    <h2>アイコン画像</h2>
+                    <input
+                        type="file"
+                        name="ar_icon_image"
+                        onChange={(e) =>
+                            setData("ar_icon_image", e.target.files)
+                        }
+                    />
+                </div>
+                <div class="image">
                     <h2>ar名刺に入れる画像</h2>
-                        <input type="file" name="ar_content_image" onChange={(e) => setData("ar_content_image", e.target.files)}/>
+                    <input
+                        type="file"
+                        name="ar_content_image"
+                        onChange={(e) =>
+                            setData("ar_content_image", e.target.files)
+                        }
+                    />
+                </div>
+
+                <button
+                    type="submit"
+                    className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
+                >
+                    create
+                </button>
+            </form>
+
+            {card && (
+                <div className="p-12">
+                    <div className="bg-white m-3">
+                        <h1>{card.name}</h1>
+                        <p>{card.job}</p>
                     </div>
-
-                    <button
-                        type="submit"
-                        className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
-                    >
-                        create
-                    </button>
-                </form>
-
-                <Link href="/cards">戻る</Link>
-            </div>
+                    <img src={card.ar_qr_image} alt="画像が読み込めません。" />
+                    <p>{card.ar_qr_image}</p>
+                </div>
+            )}
+        </div>
     );
 };
 
