@@ -15,8 +15,13 @@ class Card extends Model
     // fillableを追記
     protected $fillable = [
         "name",
+        "en_name",
         "job",
-        "ar_name",
+        "affiliation",
+        "twitter",
+        "github",
+        "portfolio",
+        "link_url",
         "ar_icon_image",
         "ar_content_image",
         "ar_text",
