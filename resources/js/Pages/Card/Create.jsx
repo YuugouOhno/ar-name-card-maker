@@ -15,9 +15,7 @@ const Create = (props) => {
         link_url: "",
         ar_icon_image: "",
         ar_content_image: "",
-        ar_text: "",
-        bg_image: "",
-        bg_color: "",
+        ar_text: ""
     });
 
     const handleSendPosts = (e) => {
@@ -33,13 +31,9 @@ const Create = (props) => {
         if (type == "image") {
             setBg_image("./d-" + value + ".png");
             setBg_color("")
-            setData("bg_image", "./d-" + value + ".png");
-            setData("bg_color", "");
         } else if (type == "color") {
             setBg_color(value)
             setBg_image("");
-            setData("bg_color", value);
-            setData("");
         }
     }
 
@@ -330,7 +324,7 @@ const Create = (props) => {
                                     />
                                 )}
                                 {card && (
-                                    <div className="z-20 p-10 relative">
+                                    <div className="z-20 p-10 relative flex">
                                         <img
                                             src={card.ar_qr_image}
                                             className="mr-4 w-[180px] h-[180px]"
