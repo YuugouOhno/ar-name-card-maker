@@ -25,7 +25,8 @@ const Create = (props) => {
     };
 
     return (
-        <div className="p-12">
+        <div className="p-12 bg-gray-200 text-gray-800 flex justify-center items-center">
+            <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
             <form onSubmit={handleSendPosts} enctype="multipart/form-data">
                 <div>
                     <h2>名前</h2>
@@ -142,36 +143,44 @@ const Create = (props) => {
                         id="affiliation"
                         className="text-xl font-bold text-right"
                     >
-                        {card ? card.affiliation: data.affiliation}
+                        {card ? card.affiliation : data.affiliation}
                     </div>
                     <div id="job" className="mb-2 text-right">
-                        {card ? card.job: data.job}
+                        {card ? card.job : data.job}
                     </div>
                     <div id="name" className="text-5xl text-right">
-                        {card ? card.name: data.name}
+                        {card ? data.name : data.name}
                     </div>
                     <div
                         id="en_name"
                         className="mb-2 tracking-widest text-xl text-right"
                     >
-                        {card ? card.en_name: data.en_name}
+                        {card ? card.en_name : data.en_name}
                     </div>
-                    <div className="text-right">twitter:{card ? card.twitter: data.twitter}</div>
-                    <div className="text-right">github:{card ? card.github: data.github}</div>
-                    <div className="text-right">portfolio:{card ? card.portfolio: data.portfolio}</div>
+                    <div className="text-right">
+                        twitter:{card ? card.twitter : data.twitter}
+                    </div>
+                    <div className="text-right">
+                        github:{card ? card.github : data.github}
+                    </div>
+                    <div className="text-right">
+                        portfolio:{card ? card.portfolio : data.portfolio}
+                    </div>
                 </div>
-                {card && (
-                    <div className="w-[455px] h-[275px] bg-white m-1 flex justify-center items-center">
-                        <img
-                            src={card.ar_qr_image}
-                            className="mr-4 w-[180px] h-[180px]"
-                        />
-                        <img
-                            src="./card/pattern.png"
-                            className="w-[180px] h-[180px]"
-                        />
-                    </div>
-                )}
+                <div className="w-[455px] h-[275px] bg-white m-1 flex justify-center items-center">
+                    {card && (
+                        <>
+                            <img
+                                src={card.ar_qr_image}
+                                className="mr-4 w-[180px] h-[180px]"
+                            />
+                            <img
+                                src="./card/pattern.png"
+                                className="w-[180px] h-[180px]"
+                            />
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );
