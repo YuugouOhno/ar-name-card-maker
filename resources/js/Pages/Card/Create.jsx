@@ -1,10 +1,7 @@
 import React from "react";
 import { Link, useForm } from "@inertiajs/react";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
-const Create = (props) => {
-    const { auth } = props;
-
+const Create = () => {
     const { data, setData, post } = useForm({
         name: "",
         job: "",
@@ -20,14 +17,6 @@ const Create = (props) => {
     };
 
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Create
-                </h2>
-            }
-        >
             <div className="p-12">
                 <form onSubmit={handleSendPosts} enctype="multipart/form-data">
                     <div>
@@ -90,7 +79,6 @@ const Create = (props) => {
 
                 <Link href="/cards">戻る</Link>
             </div>
-        </AuthenticatedLayout>
     );
 };
 

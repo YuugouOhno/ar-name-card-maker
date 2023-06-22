@@ -30,7 +30,7 @@ class CardController extends Controller
 
         $card->fill($input)->save();
         
-        $url = 'http://localhost/camera/' . strval($card["id"]); // QRコードに変換するURL
+        $url = 'https://ar-name-card-maker-d08633638f44.herokuapp.com/camera/' . strval($card["id"]); // QRコードに変換するURL
 
         $qrCode = QrCode::format('png')->size(200)->generate($url);
         $tempFilePath = 'app/temp/qr-code.png'; // 一時ファイルとして保存するパス
