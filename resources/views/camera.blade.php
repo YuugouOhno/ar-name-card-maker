@@ -12,7 +12,7 @@
         <!-- シーンの追加とデバックUIを非表示 -->
         <a-scene embedded arjs="debugUIEnabled:false; patternRatio:0.70">
 
-            <a-marker type="pattern" url="{{asset('marker/pattern2.patt')}}">
+            <a-marker type="pattern" url="{{asset('marker/pattern.patt')}}">
                 <a-image src="{{ $card->ar_icon_image }}" height="1.35" width="1.35" position="-0.55 0 0" rotation="270 0 0" scale="1 1 1" side="double"></a-image>
 
                 <a-text value="{{ $card->en_name }}" side="double" position="0.4 0 0" rotation="270 0 0" align="left" scale="2 2 2"></a-text>

@@ -45,7 +45,7 @@ const Create = (props) => {
 
 
     return (
-        <>
+        <div className="bg-gray-200 text-gray-800">
             {page == 0 && (
                 <div className="bg-[#B4FFF2]">
                     <div class="h-screen flex items-center justify-center lerative flex-col">
@@ -60,14 +60,6 @@ const Create = (props) => {
                             >
                                 始める
                             </a>
-                            <a
-                                onClick={() => {
-                                    setPage(2);
-                                }}
-                                class="gradient1 mx-20"
-                            >
-                                使い方
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -76,14 +68,6 @@ const Create = (props) => {
                 <div className="flex h-screen w-full flex-col px-12 bg-gray-200 text-gray-800">
                     <div className="bg-[#B4FFF2] h-[80px] w-full flex justify-between items-center fixed left-0 px-12 z-50">
                         <img src="./header.png" className="h-full" />
-                        <a
-                            onClick={() => {
-                                setPage(2);
-                            }}
-                            class="gradient1 mx-20"
-                        >
-                            使い方
-                        </a>
                     </div>
 
                     <div className="flex flex-col lg:flex-row py-12 justify-center mt-[80px]">
@@ -244,7 +228,7 @@ const Create = (props) => {
                                     </div>
                                     <div className="mr-4 mb-4">
                                         <h2>
-                                            ar名刺に入れる文章（3~4行を推奨）
+                                            ar名刺に入れる文章（3~4行を推奨）＊英数字のみ
                                         </h2>
                                         <textarea
                                             placeholder="私の魅力について"
@@ -257,7 +241,7 @@ const Create = (props) => {
                                         ></textarea>
                                     </div>
                                     <div class="image mb-4">
-                                        <h2>ar名刺のアイコン画像</h2>
+                                        <h2>ar名刺のアイコン画像(1:1)</h2>
                                         <input
                                             type="file"
                                             name="ar_icon_image"
@@ -270,7 +254,7 @@ const Create = (props) => {
                                         />
                                     </div>
                                     <div class="image mb-4">
-                                        <h2>ar名刺に入れる画像</h2>
+                                        <h2>ar名刺に入れる画像(16:9)</h2>
                                         <input
                                             type="file"
                                             name="ar_content_image"
@@ -362,7 +346,7 @@ const Create = (props) => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
