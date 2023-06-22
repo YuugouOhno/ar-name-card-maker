@@ -26,6 +26,23 @@ const Create = (props) => {
     };
 
     const [page, setPage] = useState(0);
+    const [bg_image, setBg_image] = useState();
+    const [bg_color, setBg_color] = useState();
+
+    const handleSetBg = (type,value) => {
+        if (type == "image") {
+            setBg_image("./d-" + value + ".png");
+            setBg_color("")
+            setData("bg_image", "./d-" + value + ".png");
+            setData("bg_color", "");
+        } else if (type == "color") {
+            setBg_color(value)
+            setBg_image("");
+            setData("bg_color", value);
+            setData("");
+        }
+    }
+
 
     return (
         <>
@@ -79,21 +96,21 @@ const Create = (props) => {
                                             src="./d-1.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                setData("bg_image", "./d-1.png")
+                                                handleSetBg("image","1")
                                             }
                                         />
                                         <img
                                             src="./d-2.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                setData("bg_image", "./d-2.png")
+                                                handleSetBg("image","2")
                                             }
                                         />
                                         <img
                                             src="./d-3.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                setData("bg_image", "./d-3.png")
+                                                handleSetBg("image","3")
                                             }
                                         />
                                     </div>
@@ -102,24 +119,21 @@ const Create = (props) => {
                                             src="./d-4.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                setData("bg_image", "./d-4.png")
+                                                handleSetBg("image","4")
                                             }
                                         />
                                         <img
                                             src="./d-5.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                setData("bg_image", "./d-5.png")
+                                                handleSetBg("image","5")
                                             }
                                         />
                                         <input
                                             type="color"
                                             className="w-[30%] h-auto m-2"
                                             onChange={(e) =>
-                                                setData(
-                                                    "bg_color",
-                                                    e.target.value
-                                                )
+                                                handleSetBg("color",e.target.value)
                                             }
                                         />
                                     </div>
@@ -280,9 +294,9 @@ const Create = (props) => {
 
                         <div className="flex lg:flex-col overflow-y-auto">
                             <div className="m-4 w-[455px] h-[275px] bg-white flex flex-col relative">
-                                {card && (
+                                {bg_image && (
                                     <img
-                                        src={card.bg_image}
+                                        src={bg_image}
                                         className="z-10 absolute w-[455px] h-[275px]"
                                     />
                                 )}
@@ -325,9 +339,9 @@ const Create = (props) => {
                                 </div>
                             </div>
                             <div className="w-[455px] h-[275px] bg-white m-4 flex justify-center items-center">
-                                {card && (
+                                {bg_image && (
                                     <img
-                                        src={card.bg_image}
+                                        src={bg_image}
                                         className="z-10 absolute w-[455px] h-[275px]"
                                     />
                                 )}
