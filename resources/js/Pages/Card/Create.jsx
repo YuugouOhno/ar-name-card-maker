@@ -3,7 +3,7 @@ import { Link, useForm } from "@inertiajs/react";
 
 const Create = (props) => {
     const { card } = props;
-
+    console.log(card)
     const { data, setData, post } = useForm({
         name: "",
         en_name: "",
@@ -317,36 +317,36 @@ const Create = (props) => {
                                         id="affiliation"
                                         className="text-xl font-bold text-right"
                                     >
-                                        {card
+                                        {data.affiliation?data.affiliation:(card
                                             ? card.affiliation
-                                            : data.affiliation}
+                                            : data.affiliation)}
                                     </div>
                                     <div id="job" className="mb-2 text-right">
-                                        {card ? card.job : data.job}
+                                        {data.job?data.job:(card ? card.job : data.job)}
                                     </div>
                                     <div
                                         id="name"
                                         className="text-5xl text-right"
                                     >
-                                        {card ? data.name : data.name}
+                                        {data.name ? data.name : (card ? data.name : data.name)}
                                     </div>
                                     <div
                                         id="en_name"
                                         className="mb-2 tracking-widest text-xl text-right"
                                     >
-                                        {card ? card.en_name : data.en_name}
+                                        {data.en_name ? data.en_name : (card ? card.en_name : data.en_name)}
                                     </div>
                                     <div className="text-right">
                                         twitter:
-                                        {card ? card.twitter : data.twitter}
+                                        {data.twitter ? data.twitter : (card ? card.twitter : data.twitter)}
                                     </div>
                                     <div className="text-right">
                                         github:
-                                        {card ? card.github : data.github}
+                                        { data.github ?  data.github : (card ? card.github : data.github)}
                                     </div>
                                     <div className="text-right">
                                         portfolio:
-                                        {card ? card.portfolio : data.portfolio}
+                                        {data.portfolio ? data.portfolio : (card ? card.portfolio : data.portfolio)}
                                     </div>
                                 </div>
                             </div>

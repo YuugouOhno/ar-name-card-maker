@@ -19,6 +19,7 @@ class CardController extends Controller
 
     public function create(Request $request)
     {
+        $card = null;
         if ($request) {
             $card = $request->session()->get('card');
         };
