@@ -15,7 +15,7 @@ const Create = (props) => {
         link_url: "",
         ar_icon_image: "",
         ar_content_image: "",
-        ar_text: ""
+        ar_text: "",
     });
 
     const handleSendPosts = (e) => {
@@ -25,22 +25,27 @@ const Create = (props) => {
 
     const [page, setPage] = useState(0);
     const [bg_image, setBg_image] = useState();
-    const [bg_color, setBg_color] = useState("background:white");
+    const [bg_color, setBg_color] = useState({ backgroundColor: "white" });
+    const [text_color, setText_color] = useState({ color: "black" });
 
-    const handleSetBg = (type,value) => {
+    const handleSetBg = (type, value) => {
         if (type == "image") {
             setBg_image("./d-" + value + ".png");
-            setBg_color("background:white")
+            setBg_color({ backgroundColor: "white" });
         } else if (type == "color") {
-            console.log(value)
-            setBg_color("background:" + value)
+            console.log(value);
+            setBg_color({ backgroundColor: value });
             setBg_image("");
+            console.log(bg_color);
         }
-    }
+    };
 
+    const handleSetColor = (value) => {
+        setText_color({ color: value });
+    };
 
     return (
-        <div className="bg-gray-200 text-gray-800">
+        <div className="">
             {page == 0 && (
                 <div className="bg-[#B4FFF2]">
                     <div class="h-screen flex items-center justify-center lerative flex-col">
@@ -60,9 +65,9 @@ const Create = (props) => {
                 </div>
             )}
             {page >= 1 && (
-                <div className="flex w-full flex-col px-12 bg-gray-200 text-gray-800">
-                    <div className="bg-[#B4FFF2] h-[80px] w-full flex justify-between items-center fixed left-0 px-12 z-50">
-                        <img src="./header.png" className="h-full" />
+                <div className="flex w-full flex-col px-12">
+                    <div className="bg-[#B4FFF2] h-[80px] w-full flex justify-between items-center fixed left-0 px-12 z-30 opacity-90">
+                        <img src="./header.png" className="h-full opacity-90" />
                     </div>
 
                     <div className="flex flex-col lg:flex-row py-12 justify-center mt-[80px]">
@@ -75,21 +80,21 @@ const Create = (props) => {
                                             src="./d-1.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                handleSetBg("image","1")
+                                                handleSetBg("image", "1")
                                             }
                                         />
                                         <img
                                             src="./d-2.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                handleSetBg("image","2")
+                                                handleSetBg("image", "2")
                                             }
                                         />
                                         <img
                                             src="./d-3.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                handleSetBg("image","3")
+                                                handleSetBg("image", "3")
                                             }
                                         />
                                     </div>
@@ -98,21 +103,25 @@ const Create = (props) => {
                                             src="./d-4.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                handleSetBg("image","4")
+                                                handleSetBg("image", "4")
                                             }
                                         />
                                         <img
                                             src="./d-5.png"
                                             className="w-[30%] m-2"
                                             onClick={() =>
-                                                handleSetBg("image","5")
+                                                handleSetBg("image", "5")
                                             }
                                         />
                                         <input
                                             type="color"
                                             className="w-[30%] h-auto m-2"
+                                            defaultValue="#FFFFFF"
                                             onChange={(e) =>
-                                                handleSetBg("color",e.target.value)
+                                                handleSetBg(
+                                                    "color",
+                                                    e.target.value
+                                                )
                                             }
                                         />
                                     </div>
@@ -136,7 +145,7 @@ const Create = (props) => {
                                             />
                                         </div>
 
-                                        <div>
+                                        <div className="mr-4">
                                             <h2>名前（ローマ字）</h2>
                                             <input
                                                 type="text"
@@ -144,6 +153,20 @@ const Create = (props) => {
                                                 onChange={(e) =>
                                                     setData(
                                                         "en_name",
+                                                        e.target.value
+                                                    )
+                                                }
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <h2>文字の色</h2>
+                                            <input
+                                                type="color"
+                                                className="w-[40px] h-[40px]"
+                                                defaultValue="#000000"
+                                                onChange={(e) =>
+                                                    handleSetColor(
                                                         e.target.value
                                                     )
                                                 }
@@ -235,35 +258,39 @@ const Create = (props) => {
                                             }
                                         ></textarea>
                                     </div>
-                                    <div class="image mb-4">
-                                        <h2>ar名刺のアイコン画像(1:1)</h2>
-                                        <input
-                                            type="file"
-                                            name="ar_icon_image"
-                                            onChange={(e) =>
-                                                setData(
-                                                    "ar_icon_image",
-                                                    e.target.files
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                    <div class="image mb-4">
-                                        <h2>ar名刺に入れる画像(16:9)</h2>
-                                        <input
-                                            type="file"
-                                            name="ar_content_image"
-                                            onChange={(e) =>
-                                                setData(
-                                                    "ar_content_image",
-                                                    e.target.files
-                                                )
-                                            }
-                                        />
+                                    <div className="input_image">
+                                        <div class="mb-4">
+                                            <h2>ar名刺のアイコン画像(1:1)</h2>
+                                            <input
+                                                type="file"
+                                                className="text-white"
+                                                name="ar_icon_image"
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "ar_icon_image",
+                                                        e.target.files
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <h2>ar名刺に入れる画像(16:9)</h2>
+                                            <input
+                                                type="file"
+                                                className="text-white"
+                                                name="ar_content_image"
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "ar_content_image",
+                                                        e.target.files
+                                                    )
+                                                }
+                                            />
+                                        </div>
                                     </div>
                                     <button
+                                        className="fixed top-3 right-0 gradient1 mx-20 z-40" 
                                         type="submit"
-                                        className="gradient1 mx-20"
                                     >
                                         作成
                                     </button>
@@ -272,14 +299,20 @@ const Create = (props) => {
                         </div>
 
                         <div className="flex lg:flex-col overflow-y-auto">
-                            <div className="m-4 w-[455px] h-[275px] flex flex-col relative" style={bg_color}>
+                            <div
+                                className="m-4 w-[455px] h-[275px] flex flex-col relative"
+                                style={bg_color}
+                            >
                                 {bg_image && (
                                     <img
                                         src={bg_image}
                                         className="z-10 absolute w-[455px] h-[275px]"
                                     />
                                 )}
-                                <div className="z-20 p-10 relative">
+                                <div
+                                    className="z-20 p-10 relative"
+                                    style={text_color}
+                                >
                                     <div
                                         id="affiliation"
                                         className="text-xl font-bold text-right"
@@ -317,7 +350,10 @@ const Create = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-[455px] h-[275px] m-4 flex justify-center items-center" style={bg_color}>
+                            <div
+                                className="w-[455px] h-[275px] m-4 flex justify-center items-center"
+                                style={bg_color}
+                            >
                                 {bg_image && (
                                     <img
                                         src={bg_image}
